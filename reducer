@@ -1,0 +1,52 @@
+import React, { useReducer, useState } from 'react';
+const MyAction=(state,action)=>{
+
+    console.log(action.type)
+
+    // const V1=(action.Name1)
+    // const V2=(action.Email1)
+    // const V3=(action.Contact1)
+    // const V4=(action.City1)
+
+ if(action.type==='My'){
+    return{
+      Name1:'',
+      Email1:'',
+      Contact1:'',
+      City:''
+    }
+ }
+        
+}
+function Reducer(){
+    const[reducerdata,setReducerData]=useState({
+
+        Name:'',
+        Email:'',
+        Contact:'',
+        City:''
+
+    })
+
+    const[result,setResult]=useState()
+
+    const[state,dispatch]=useReducer(MyAction,{s:0})
+ return(
+    <div>
+      <center>
+        <h1 className='text-3xl text-bold border-b border-offset-3'>Reducer Demo</h1>
+        <div><input  type='text' className='border p-2 m-2 rounded-xl' onChange={(e)=>{setReducerData({...reducerdata,Name:e.target.value})}}/></div>
+         <div><input type='text' className='border p-2 m-2 rounded-xl' onChange={(e)=>{setReducerData({...reducerdata,Email:e.target.value})}}/></div>
+          <div><input type='text' className='border p-2 m-2 rounded-xl' onChange={(e)=>{setReducerData({...reducerdata,Contact:e.target.value})}}/></div>
+           <div><input type='text' className='border p-2 m-2 rounded-xl' onChange={(e)=>{setReducerData({...reducerdata,City:e.target.value})}}/></div>
+           <div><input type='button' value="reset" onClick={()=>{dispatch({type:'My',Name1:reducerdata.Name,Email1:reducerdata.Email,Contact1:reducerdata.Contact,City1:reducerdata.City})}}></input></div>
+          {state &&
+          <h1>{reducerdata.Name},{reducerdata.Email},{reducerdata.Contact},{reducerdata.City}</h1>
+         
+          }
+      </center>
+
+    </div>
+ )
+}
+export default Reducer
